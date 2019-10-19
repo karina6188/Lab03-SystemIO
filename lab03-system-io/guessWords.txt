@@ -12,3 +12,5 @@ multiple
 rainy
 prairie
 nickle
+galley
+ballet
