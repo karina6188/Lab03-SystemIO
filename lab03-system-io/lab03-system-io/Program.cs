@@ -33,13 +33,12 @@ namespace lab03_system_io
             Console.WriteLine("4) Start a Game");
             Console.WriteLine("5) Exit");
             string selection = Console.ReadLine();
-            string path = "../../guessWords.txt";
             try
             {
                 switch (selection)
                 {
                     case "1":
-                        ViewWords(path);
+                        ViewWords("../../../../guessWords.txt");
                         return true;
 
                     case "2":
@@ -81,6 +80,7 @@ namespace lab03_system_io
         {
             string allWords = File.ReadAllText(path);
             Console.WriteLine(allWords);
+            Console.Read();
         }
 
         public static void RemoveWords()
