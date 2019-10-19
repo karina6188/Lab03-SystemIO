@@ -33,12 +33,14 @@ namespace lab03_system_io
             Console.WriteLine("4) Start a Game");
             Console.WriteLine("5) Exit");
             string selection = Console.ReadLine();
+            string path = "../../../../guessWords.txt";
             try
             {
                 switch (selection)
                 {
                     case "1":
-                        ViewWords("../../../../guessWords.txt");
+                        ViewWords(path);
+                        Console.ReadLine();
                         return true;
 
                     case "2":
@@ -46,7 +48,9 @@ namespace lab03_system_io
                         return true;
 
                     case "3":
-                        AddWords();
+                        Console.WriteLine("Enter a word that you want to add to the game.");
+                        string[] newWord = { Console.ReadLine()};
+                        AddWords(path, newWord);
                         return true;
 
                     case "4":
@@ -78,9 +82,11 @@ namespace lab03_system_io
 
         public static void ViewWords(string path)
         {
-            string allWords = File.ReadAllText(path);
-            Console.WriteLine(allWords);
-            Console.Read();
+            string[] allWords = File.ReadAllLines(path);
+            foreach(string word in allWords)
+            {
+                Console.WriteLine(word);
+            }
         }
 
         public static void RemoveWords()
@@ -89,10 +95,9 @@ namespace lab03_system_io
             string removeWord = Console.ReadLine();
         }
 
-        public static void AddWords()
+        public static void AddWords(string path, string[] word)
         {
-            Console.WriteLine("Enter a word that you want to add to the game.");
-            string addWord = Console.ReadLine();
+            File.AppendAllLines(path, word);
         }
 
         public static void StartGame()
