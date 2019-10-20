@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace lab03_system_io
 {
@@ -53,6 +54,7 @@ namespace lab03_system_io
                         Console.WriteLine("Enter a word that you want to add to the game.");
                         string[] newWord = { Console.ReadLine() };
                         AddWords(path, newWord);
+                        Console.ReadLine();
                         return true;
 
                     case "4":
@@ -132,13 +134,25 @@ namespace lab03_system_io
         {
             if (word[0].Length > 0)
             {
-                File.AppendAllLines(path, word);
+                if (Regex.IsMatch(word[0], @"^[a-zA-Z]+$"))
+                {
+                        File.AppendAllLines(path, word);
+                }
+                else
+                {
+                    Console.WriteLine("Please enter characters only.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("You did not enter a word.");
             }
         }
 
         public static void StartGame()
         {
             char guessCharacter = Console.ReadLine()[0];
+
         }
     }
 }
