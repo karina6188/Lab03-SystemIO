@@ -43,7 +43,6 @@ namespace lab03_system_io
                         Console.WriteLine("Let's start the game!");
                         Console.WriteLine("Enter characters to guess the word.");
                         StartGame(path);
-                        Console.ReadLine();
                         return true;
 
                     case "2":
@@ -161,19 +160,29 @@ namespace lab03_system_io
 
             string guessWord = allWords[randomNumber];
             int guessWordLength = guessWord.Length;
-            string[] hidden = {"_" };
-
-            //while(hidden[0].Contains("_"))
-            //{
-              //  char guess = Console.ReadLine()[0];
-              //  Console.WriteLine($"The letter you guessed: {guess}");
-
-            //}
-
+            string[] hidden = new string[guessWordLength];
+            bool notWin = true;
             Console.WriteLine($"{guessWord}");
             Console.WriteLine($"{guessWordLength}");
-            //char guessCharacter = Console.ReadLine()[0];
 
+            while (notWin)
+            {
+                char guess = Console.ReadLine()[0];
+
+                if(guessWord.Contains(guess))
+                {
+                    Console.WriteLine("CORRECT");
+                    Console.WriteLine($"{guess}");
+                    Console.ReadLine();
+                    notWin = false;
+                }
+                else
+                {
+                    Console.WriteLine($"The letter you guessed: {guess}");
+                    Console.WriteLine("WRONG");
+                    notWin = true;
+                }
+            }
         }
 
         public static int GenerateRandom(string[] allWords)
