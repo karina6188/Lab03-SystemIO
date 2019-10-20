@@ -41,8 +41,9 @@ namespace lab03_system_io
                 {
                     case "1":
                         Console.WriteLine("Let's start the game!");
-                        Console.WriteLine("Enter a character to guess the word.");
-                        StartGame();
+                        Console.WriteLine("Enter characters to guess the word.");
+                        StartGame(path);
+                        Console.ReadLine();
                         return true;
 
                     case "2":
@@ -128,8 +129,7 @@ namespace lab03_system_io
             }
             return newWordsArray;
         }
-
-
+        
         public static void AddWords(string path, string[] word)
         {
             if (word[0].Length > 0)
@@ -153,10 +153,34 @@ namespace lab03_system_io
             }
         }
 
-        public static void StartGame()
+        public static void StartGame(string path)
         {
-            char guessCharacter = Console.ReadLine()[0];
+            string[] allWords = File.ReadAllLines(path);
+            GenerateRandom(allWords);
+            int randomNumber = (GenerateRandom(allWords));
 
+            string guessWord = allWords[randomNumber];
+            int guessWordLength = guessWord.Length;
+            string[] hidden = {"_" };
+
+            //while(hidden[0].Contains("_"))
+            //{
+              //  char guess = Console.ReadLine()[0];
+              //  Console.WriteLine($"The letter you guessed: {guess}");
+
+            //}
+
+            Console.WriteLine($"{guessWord}");
+            Console.WriteLine($"{guessWordLength}");
+            //char guessCharacter = Console.ReadLine()[0];
+
+        }
+
+        public static int GenerateRandom(string[] allWords)
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(0, allWords.Length - 1);
+            return randomNumber;
         }
     }
 }

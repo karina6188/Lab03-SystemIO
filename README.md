@@ -63,3 +63,8 @@ Application End
 
 1.4: Added RemoveWords method that removes the word from txt file. - 2019 Oct 19
 
+1.5: Modified AddWords method so the user must enter a word that contains only characters. - 2019 Oct 19
+
+1.6: Modified RemoveWords method that the user can remove a word from the file as long as the file has the word. The word does not need to be case sensitive. - 2019 Oct 19
+
+1.7: 
