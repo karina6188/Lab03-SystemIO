@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace lab03_system_io
@@ -43,6 +44,8 @@ namespace lab03_system_io
                         Console.WriteLine("Let's start the game!");
                         Console.WriteLine("Enter characters to guess the word.");
                         StartGame(path);
+                        Console.WriteLine("Congratulations! You win the game!!");
+                        Console.ReadLine();
                         return true;
 
                     case "2":
@@ -86,7 +89,7 @@ namespace lab03_system_io
         public static void ViewWords(string path)
         {
             string[] allWords = File.ReadAllLines(path);
-            foreach(string word in allWords)
+            foreach (string word in allWords)
             {
                 Console.WriteLine(word);
             }
@@ -128,7 +131,7 @@ namespace lab03_system_io
             }
             return newWordsArray;
         }
-        
+
         public static void AddWords(string path, string[] word)
         {
             if (word[0].Length > 0)
@@ -159,53 +162,56 @@ namespace lab03_system_io
             int randomNumber = (GenerateRandom(allWords));
             string guessWord = allWords[randomNumber];
             int guessWordLength = guessWord.Length;
-            string path2 = "../../../../matchGuessWords.txt";
 
-            MatchGuessWord(path2, guessWord);
-            string[] replaceHidden = MatchGuessWord(path2, guessWord);
+            string[] hidden = new string[guessWord.Length];
+            for (int i = 0; i < guessWord.Length; i++)
+            {
+                hidden[i] = "_";
+                Console.Write($"{hidden[0]} ");
+            }
+            //MatchGuessWord(guessWord);
+
             Console.WriteLine($"{guessWord}");
             Console.WriteLine($"{guessWordLength}");
-            Console.WriteLine()
 
             bool notWin = true;
             while (notWin)
             {
-                char guess = Console.ReadLine()[0];
+                char input = Console.ReadLine()[0];
+                char guess = char.ToLower(input);
                 for (int i = 0; i < guessWord.Length; i++)
                 {
                     if (guessWord[i] == guess)
                     {
-                        replaceHidden[i] = guess.ToString();
-                        Console.WriteLine("HERE");
+                        hidden[i] = guess.ToString();
                     }
                 }
-                Console.Write(replaceHidden.ToString());
-                //if(guessWord.Contains(guess))
-                //{
-                //    Console.WriteLine("CORRECT");
-                //    Console.WriteLine($"{guess}");
-                //    Console.ReadLine();
-                //    notWin = false;
-                //}
-                //else
-                //{
-                //    Console.WriteLine($"The letter you guessed: {guess}");
-                //    Console.WriteLine("WRONG");
-                //    notWin = true;
-                //}
+                foreach (string letter in hidden)
+                {
+                    Console.Write($"{letter} ");
+                }
+                foreach (string letter in hidden)
+                {
+                    if (!hidden.Contains("_"))
+                    {
+                        notWin = false;
+                    }
+                }
+                Console.WriteLine("");
+                Console.WriteLine($"You entered a character: {input}");
             }
         }
 
-        static string[] MatchGuessWord(string path, string guessWord)
-        {
-            string[] hidden = new string[guessWord.Length];
-            for (int i = 0; i < guessWord.Length; i++)
-            {
-                hidden[i] = "_ ";
-                Console.Write(hidden[0]);
-            }
-            return hidden;
-        }
+        //static string[] MatchGuessWord(string guessWord)
+        //{
+        //    string[] hidden = new string[guessWord.Length];
+        //    for (int i = 0; i < guessWord.Length; i++)
+        //    {
+        //        hidden[i] = "_ ";
+        //        Console.Write(hidden[0]);
+        //    }
+        //    return hidden;
+        //}
 
         public static int GenerateRandom(string[] allWords)
         {
