@@ -58,3 +58,5 @@ Application End
 1.1: Set up the program and added UserInterface method. - 2019 Oct 18
 
 1.2: Added txt file and added AddWords method. Now the user can add words to the txt file. - 2019 Oct 19
+
+1.3: For AddWords, add conditions to check if the user enters a valid input. If not, the word will not be added. - 2019 Oct 19

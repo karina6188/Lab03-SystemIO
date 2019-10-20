@@ -57,8 +57,9 @@ namespace lab03_system_io
 
                     case "4":
                         Console.WriteLine("Enter a word that you want to remove from the game.");
-                        string removeWord = Console.ReadLine();
+                        string[] removeWord = { Console.ReadLine() };
                         RemoveWords(path, removeWord);
+                        Console.ReadLine();
                         return true;
 
                     case "5":
@@ -91,25 +92,39 @@ namespace lab03_system_io
             }
         }
 
-        public static void RemoveWords(string path, string word)
+        public static void RemoveWords(string path, string[] word)
         {
-            string allWords = File.ReadAllText(path);
+            string[] allWords = File.ReadAllLines(path);
             string[] newWordsArray = new string[allWords.Length - 1];
+            int indexFound = -1;
             for (int i = 0; i < allWords.Length; i++)
             {
-                if (allWords.Contains(word))
+                if (allWords[i].Contains(word[0]))
                 {
-                    Console.WriteLine("THIS WORKS");
+                    indexFound = i;
                     Console.ReadLine();
+                    RemoveAction(allWords, newWordsArray, indexFound);
                 }
             }
-
-  
-            for (int i = 0; i < newWordsArray.Length; i++)
-            {
-
-            }
+            File.WriteAllLines(path, newWordsArray);
         }
+
+        public static string[] RemoveAction(string[] allWords, string[] newWordsArray, int index)
+        {
+            for (int i = 0; i < allWords.Length; i++)
+            {
+                if (i < index)
+                {
+                    newWordsArray[i] = allWords[i];
+                }
+                if (i > index)
+                {
+                    newWordsArray[i - 1] = allWords[i];
+                }
+            }
+            return newWordsArray;
+        }
+
 
         public static void AddWords(string path, string[] word)
         {
