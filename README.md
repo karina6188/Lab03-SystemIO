@@ -67,4 +67,6 @@ Application End
 
 1.6: Modified RemoveWords method that the user can remove a word from the file as long as the file has the word. The word does not need to be case sensitive. - 2019 Oct 19
 
-1.7: 
+1.7: Added GenerateRandom method for StartGame method to randomly select a guess word from the file. - 2019 Oct 19
+
+1.8: 
