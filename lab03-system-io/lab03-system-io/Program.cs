@@ -54,7 +54,6 @@ namespace lab03_system_io
                         Console.WriteLine("Enter a word that you want to add to the game.");
                         string[] newWord = { Console.ReadLine() };
                         AddWords(path, newWord);
-                        Console.ReadLine();
                         return true;
 
                     case "4":
@@ -100,7 +99,8 @@ namespace lab03_system_io
             int indexFound = -1;
             for (int i = 0; i < allWords.Length; i++)
             {
-                if (allWords[i].Contains(word[0]))
+                string word1 = word[0].ToLower();
+                if (allWords[i].Contains(word1))
                 {
                     indexFound = i;
                     RemoveAction(allWords, newWordsArray, indexFound);
@@ -136,16 +136,20 @@ namespace lab03_system_io
             {
                 if (Regex.IsMatch(word[0], @"^[a-zA-Z]+$"))
                 {
-                        File.AppendAllLines(path, word);
+                    string word1 = word[0].ToLower();
+                    string[] lowerWord = { word1 };
+                    File.AppendAllLines(path, lowerWord);
                 }
                 else
                 {
                     Console.WriteLine("Please enter characters only.");
+                    Console.ReadLine();
                 }
             }
             else
             {
                 Console.WriteLine("You did not enter a word.");
+                Console.ReadLine();
             }
         }
 
