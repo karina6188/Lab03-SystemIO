@@ -59,7 +59,6 @@ namespace lab03_system_io
                         Console.WriteLine("Enter a word that you want to remove from the game.");
                         string[] removeWord = { Console.ReadLine() };
                         RemoveWords(path, removeWord);
-                        Console.ReadLine();
                         return true;
 
                     case "5":
@@ -102,11 +101,14 @@ namespace lab03_system_io
                 if (allWords[i].Contains(word[0]))
                 {
                     indexFound = i;
-                    Console.ReadLine();
                     RemoveAction(allWords, newWordsArray, indexFound);
+                    File.WriteAllLines(path, newWordsArray);
+                }
+                else
+                {
+                    File.WriteAllLines(path, allWords);
                 }
             }
-            File.WriteAllLines(path, newWordsArray);
         }
 
         public static string[] RemoveAction(string[] allWords, string[] newWordsArray, int index)
