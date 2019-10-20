@@ -69,4 +69,6 @@ Application End
 
 1.7: Added GenerateRandom method for StartGame method to randomly select a guess word from the file. - 2019 Oct 19
 
-1.8: 
+1.8: Added codes to StartGame to check if user's guesses match the guess word. - 2019 Oct 19
+
+1.9: 
