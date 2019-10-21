@@ -29,7 +29,6 @@ Then select and open lab03-system-io.
 ## To Run This Program
 Open the program using Visual Studio and click "Start" button to run this program.
 
-
 ## Visuals
 
 Application Start
@@ -58,6 +57,10 @@ Application End
 
 ![Alt execution capture](/captures/app_exit.jpg)
 
+# Resource
+Reference to Regex IsMatch method from this link:
+https://stackoverflow.com/questions/1181419/verifying-that-a-string-contains-only-letters-in-c-sharp/1181426
+
 ## Change Log
 
 1.1: Set up the program and added UserInterface method. - 2019 Oct 18
@@ -83,3 +86,5 @@ Application End
 1.11: Add conditions to break out from the while loop once all the characters are guessed. - 2019 Oct 20
 
 1.12: Add summary comments, try and catch blocks, and checks or any bugs. - 2019 Oct 20
+
+1.13: Add unit testing and pass all the tests. The program is completed. - 2019 Oct 20

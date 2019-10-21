@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace lab03_system_io
 {
-    class Program
+    public class Program
     {
         /// <summary>
         /// Main method is to handle all the exceptions that are not catched by
@@ -55,6 +55,7 @@ namespace lab03_system_io
                         Console.WriteLine("Let's start the game!");
                         Console.WriteLine("Enter characters to guess the word.");
                         StartGame(path);
+                        Console.WriteLine("");
                         Console.WriteLine("Congratulations! You win the game!!");
                         Console.ReadLine();
                         return true;
@@ -101,21 +102,23 @@ namespace lab03_system_io
         /// ViewWords reads all the texts from guessWords.txt to show in the console.
         /// </summary>
         /// <param name="path"></param>
-        public static void ViewWords(string path)
+        public static int ViewWords(string path)
         {
+            string[] allWords = File.ReadAllLines(path);
             try
             {
-                string[] allWords = File.ReadAllLines(path);
                 foreach (string word in allWords)
                 {
                     Console.WriteLine(word);
                 }
+                return allWords.Length;
             }
             catch (Exception e)
             {
                 Console.WriteLine("There is something wrong with the txt file.");
                 Console.WriteLine(e.Message);
                 Console.ReadLine();
+                return allWords.Length;
             }
         }
 
@@ -128,12 +131,12 @@ namespace lab03_system_io
         /// </summary>
         /// <param name="path"></param>
         /// <param name="word"></param>
-        public static void RemoveWords(string path, string[] word)
+        public static string RemoveWords(string path, string[] word)
         {
+            string[] allWords = File.ReadAllLines(path);
+            string[] newWordsArray = new string[allWords.Length - 1];
             try
             {
-                string[] allWords = File.ReadAllLines(path);
-                string[] newWordsArray = new string[allWords.Length - 1];
                 int indexFound;
                 for (int i = 0; i < allWords.Length; i++)
                 {
@@ -149,11 +152,13 @@ namespace lab03_system_io
                         File.WriteAllLines(path, allWords);
                     }
                 }
+                return "no";
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.ReadLine();
+                return "yes";
             }
         }
 
@@ -187,7 +192,7 @@ namespace lab03_system_io
         /// </summary>
         /// <param name="path"></param>
         /// <param name="word"></param>
-        public static void AddWords(string path, string[] word)
+        public static string[] AddWords(string path, string[] word)
         {
             try
             {
@@ -198,23 +203,31 @@ namespace lab03_system_io
                         string word1 = word[0].ToLower();
                         string[] lowerWord = { word1 };
                         File.AppendAllLines(path, lowerWord);
+                        string[] forTest = File.ReadAllLines(path);
+                        return forTest;
                     }
                     else
                     {
                         Console.WriteLine("Please enter characters only.");
                         Console.ReadLine();
+                        string[] forTest = File.ReadAllLines(path);
+                        return forTest;
                     }
                 }
                 else
                 {
                     Console.WriteLine("You did not enter a word.");
                     Console.ReadLine();
+                    string[] forTest = File.ReadAllLines(path);
+                    return forTest;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.ReadLine();
+                string[] forTest = File.ReadAllLines(path);
+                return forTest;
             }
         }
 
@@ -231,13 +244,12 @@ namespace lab03_system_io
         /// happens, it breaks out from the while loop and the user wins the game.
         /// </summary>
         /// <param name="path"></param>
-        public static void StartGame(string path)
+        public static char StartGame(string path)
         {
             string[] allWords = File.ReadAllLines(path);
             GenerateRandom(allWords);
             int randomNumber = (GenerateRandom(allWords));
             string guessWord = allWords[randomNumber];
-            int guessWordLength = guessWord.Length;
 
             string[] hidden = new string[guessWord.Length];
             for (int i = 0; i < guessWord.Length; i++)
@@ -258,6 +270,7 @@ namespace lab03_system_io
                     {
                         hidden[i] = guess.ToString();
                     }
+
                 }
                 foreach (string letter in hidden)
                 {
@@ -268,11 +281,13 @@ namespace lab03_system_io
                     if (!hidden.Contains("_"))
                     {
                         notWin = false;
+                        return 'y';
                     }
                 }
                 Console.WriteLine("");
                 Console.WriteLine($"You entered a character: {input}");
             }
+            return 'n';
         }
 
         /// <summary>
