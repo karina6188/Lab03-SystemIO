@@ -35,7 +35,7 @@ Domain Modeling
 
 This drawing illustrates the main functions for this program. Each function has been detailed to include smaller functions that fullfil the requirements for this program. See summary comments in the program for more details.
 
-![Alt execution capture](/captures/domain_modeling.JPG)
+![Alt execution capture](/captures/domain_modeling.jpg)
 
 Application Start
 
