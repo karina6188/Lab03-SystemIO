@@ -7,6 +7,12 @@ namespace lab03_system_io
 {
     class Program
     {
+        /// <summary>
+        /// Main method is to handle all the exceptions that are not catched by
+        /// other methods. This method calls UserInterface method which is the
+        /// main menu.
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             try
@@ -24,6 +30,11 @@ namespace lab03_system_io
             }
         }
 
+        /// <summary>
+        /// This is the main menu and calls all the other methods based on the
+        /// user's selections.
+        /// </summary>
+        /// <returns></returns>
         public static bool UserInterface()
         {
             Console.Clear();
@@ -86,36 +97,74 @@ namespace lab03_system_io
             }
         }
 
+        /// <summary>
+        /// ViewWords reads all the texts from guessWords.txt to show in the console.
+        /// </summary>
+        /// <param name="path"></param>
         public static void ViewWords(string path)
         {
-            string[] allWords = File.ReadAllLines(path);
-            foreach (string word in allWords)
+            try
             {
-                Console.WriteLine(word);
+                string[] allWords = File.ReadAllLines(path);
+                foreach (string word in allWords)
+                {
+                    Console.WriteLine(word);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("There is something wrong with the txt file.");
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
             }
         }
 
+        /// <summary>
+        /// RemoveWords takes in user's word and check if the word exists in the txt
+        /// file. The word is checked case insensitive. Once the word is found, the
+        /// txt file is rewritten with only the words that are not removed. The words
+        /// are then shown in the console. If the word is not found, no changes are
+        /// made to the txt file.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="word"></param>
         public static void RemoveWords(string path, string[] word)
         {
-            string[] allWords = File.ReadAllLines(path);
-            string[] newWordsArray = new string[allWords.Length - 1];
-            int indexFound = -1;
-            for (int i = 0; i < allWords.Length; i++)
+            try
             {
-                string word1 = word[0].ToLower();
-                if (allWords[i].Contains(word1))
+                string[] allWords = File.ReadAllLines(path);
+                string[] newWordsArray = new string[allWords.Length - 1];
+                int indexFound;
+                for (int i = 0; i < allWords.Length; i++)
                 {
-                    indexFound = i;
-                    RemoveAction(allWords, newWordsArray, indexFound);
-                    File.WriteAllLines(path, newWordsArray);
+                    string word1 = word[0].ToLower();
+                    if (allWords[i].Contains(word1))
+                    {
+                        indexFound = i;
+                        RemoveAction(allWords, newWordsArray, indexFound);
+                        File.WriteAllLines(path, newWordsArray);
+                    }
+                    else
+                    {
+                        File.WriteAllLines(path, allWords);
+                    }
                 }
-                else
-                {
-                    File.WriteAllLines(path, allWords);
-                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadLine();
             }
         }
 
+        /// <summary>
+        /// This method is to support RemoveWords method in order to put the non-removed
+        /// words into a new array. 
+        /// </summary>
+        /// <param name="allWords"></param>
+        /// <param name="newWordsArray"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public static string[] RemoveAction(string[] allWords, string[] newWordsArray, int index)
         {
             for (int i = 0; i < allWords.Length; i++)
@@ -132,29 +181,56 @@ namespace lab03_system_io
             return newWordsArray;
         }
 
+        /// <summary>
+        /// AddWords checks if the user actually inputs valid characters only. If yes,
+        /// the word is then added to the txt file.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="word"></param>
         public static void AddWords(string path, string[] word)
         {
-            if (word[0].Length > 0)
+            try
             {
-                if (Regex.IsMatch(word[0], @"^[a-zA-Z]+$"))
+                if (word[0].Length > 0)
                 {
-                    string word1 = word[0].ToLower();
-                    string[] lowerWord = { word1 };
-                    File.AppendAllLines(path, lowerWord);
+                    if (Regex.IsMatch(word[0], @"^[a-zA-Z]+$"))
+                    {
+                        string word1 = word[0].ToLower();
+                        string[] lowerWord = { word1 };
+                        File.AppendAllLines(path, lowerWord);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter characters only.");
+                        Console.ReadLine();
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Please enter characters only.");
+                    Console.WriteLine("You did not enter a word.");
                     Console.ReadLine();
                 }
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("You did not enter a word.");
+                Console.WriteLine(e.Message);
                 Console.ReadLine();
             }
         }
 
+        /// <summary>
+        /// StartGame first randomly selects a word from the txt file. GenerateRandom
+        /// method is created to support this action. Once a word is randomly selected,
+        /// underscores are created to match with the length of the word. The method 
+        /// then takes in user's input one character at a time to check if the character
+        /// matches any characters in the guess word. The character is being checked
+        /// case insensitively. If the character matches, the underscores are replaced
+        /// with the correct characters at the correct positions. If the character does
+        /// not matches any within the word, the underscores are printed to the console
+        /// again until all the characters of the word are guessed correctly. Once this
+        /// happens, it breaks out from the while loop and the user wins the game.
+        /// </summary>
+        /// <param name="path"></param>
         public static void StartGame(string path)
         {
             string[] allWords = File.ReadAllLines(path);
@@ -202,17 +278,12 @@ namespace lab03_system_io
             }
         }
 
-        //static string[] MatchGuessWord(string guessWord)
-        //{
-        //    string[] hidden = new string[guessWord.Length];
-        //    for (int i = 0; i < guessWord.Length; i++)
-        //    {
-        //        hidden[i] = "_ ";
-        //        Console.Write(hidden[0]);
-        //    }
-        //    return hidden;
-        //}
-
+        /// <summary>
+        /// This is a helper method to support StartGame method. This method generates
+        /// a random number between 0 and the number of total words in the txt file. 
+        /// </summary>
+        /// <param name="allWords"></param>
+        /// <returns></returns>
         public static int GenerateRandom(string[] allWords)
         {
             Random random = new Random();

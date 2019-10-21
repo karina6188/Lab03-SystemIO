@@ -61,14 +61,20 @@ Application End
 
 1.3: For AddWords, add conditions to check if the user enters a valid input. If not, the word will not be added. - 2019 Oct 19
 
-1.4: Added RemoveWords method that removes the word from txt file. - 2019 Oct 19
+1.4: Add RemoveWords method that removes the word from txt file. - 2019 Oct 19
 
-1.5: Modified AddWords method so the user must enter a word that contains only characters. - 2019 Oct 19
+1.5: Modify AddWords method so the user must enters a word that contains only characters. - 2019 Oct 19
 
-1.6: Modified RemoveWords method that the user can remove a word from the file as long as the file has the word. The word does not need to be case sensitive. - 2019 Oct 19
+1.6: Modify RemoveWords method that the user can remove a word from the file as long as the file has the word. The word does not need to be case sensitive. - 2019 Oct 19
 
-1.7: Added GenerateRandom method for StartGame method to randomly select a guess word from the file. - 2019 Oct 19
+1.7: Add GenerateRandom method for StartGame method to randomly select a guess word from the file. - 2019 Oct 19
 
-1.8: Added codes to StartGame to check if user's guesses match the guess word. - 2019 Oct 19
+1.8: Add codes to take in user's input one character at a time, and check if user's guesses match the guess word. - 2019 Oct 19
 
-1.9: 
+1.9: Add codes to show underscores to the console that the length of the underscores matches with the length of the guess word. - 2019 Oct 20
+
+1.10: Add codes to replace the underscores with the correct characters once the user guesses correctly. - 2019 Oct 20
+
+1.11: Add conditions to break out from the while loop once all the characters are guessed. - 2019 Oct 20
+
+1.12: Add summary comments, try and catch blocks, and checks or any bugs. - 2019 Oct 20
