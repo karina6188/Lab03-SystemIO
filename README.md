@@ -65,7 +65,7 @@ Application End
 
 # Resource
 Reference to Regex IsMatch method from this link:
-https://stackoverflow.com/questions/1181419/verifying-that-a-string-contains-only-letters-in-c-sharp/1181426
+
 
 ## Change Log
 
