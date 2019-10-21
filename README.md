@@ -34,29 +34,29 @@ Open the program using Visual Studio and click "Start" button to run this progra
 
 Application Start
 
-![Alt execution capture](/captures/app_start.JPG)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_start.JPG)
 
 Using the Application - Start Game
 
-![Alt execution capture](/captures/app_start_game.jpg)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_start_game.JPG)
 
 Using the Application - View Words
 
-![Alt execution capture](/captures/app_view_words.jpg)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_view_words.JPG)
 
 Using the Application - Add Words
 
-![Alt execution capture](/captures/app_add_words.jpg)
-![Alt execution capture](/captures/app_add_words2.jpg)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_add_words.JPG)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_add_words2.JPG)
 
 Using the Application - Remove Words
 
-![Alt execution capture](/captures/app_remove_words.jpg)
-![Alt execution capture](/captures/app_remove_words2.jpg)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_remove_words.JPG)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_remove_words2.JPG)
 
 Application End
 
-![Alt execution capture](/captures/app_exit.jpg)
+![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_exit.JPG)
 
 ## Change Log
 
