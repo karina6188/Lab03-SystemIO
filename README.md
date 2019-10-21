@@ -35,33 +35,33 @@ Domain Modeling
 
 This drawing illustrates the main functions for this program. Each function has been detailed to include smaller functions that fullfil the requirements for this program. See summary comments in the program for more details.
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/domain_modeling.jpg)
+![Alt execution capture](/captures/domain_modeling.jpg)
 
 Application Start
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_start.JPG)
+![Alt execution capture](/captures/app_start.JPG)
 
 Using the Application - Start Game
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_start_game.JPG)
+![Alt execution capture](/captures/app_start_game.JPG)
 
 Using the Application - View Words
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_view_words.JPG)
+![Alt execution capture](/captures/app_view_words.JPG)
 
 Using the Application - Add Words
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_add_words.JPG)
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_add_words2.JPG)
+![Alt execution capture](/captures/app_add_words.JPG)
+![Alt execution capture](/captures/app_add_words2.JPG)
 
 Using the Application - Remove Words
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_remove_words.JPG)
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_remove_words2.JPG)
+![Alt execution capture](/captures/app_remove_words.JPG)
+![Alt execution capture](/captures/app_remove_words2.JPG)
 
 Application End
 
-![Alt execution capture](https://github.com/karina6188/Lab03-SystemIO/blob/karina-lab03/captures/app_exit.JPG)
+![Alt execution capture](/captures/app_exit.JPG)
 
 # Resource
 Reference to Regex IsMatch method from this link:
