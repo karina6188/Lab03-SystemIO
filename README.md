@@ -34,7 +34,7 @@ Open the program using Visual Studio and click "Start" button to run this progra
 
 Application Start
 
-![Alt execution capture](/captures/app_start.jpg)
+![Alt execution capture](/captures/app_start.JPG)
 
 Using the Application - Start Game
 
