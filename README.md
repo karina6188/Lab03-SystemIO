@@ -34,24 +34,29 @@ Open the program using Visual Studio and click "Start" button to run this progra
 
 Application Start
 
-![Alt execution capture](/)
+![Alt execution capture](/captures/app_start.jpg)
 
+Using the Application - Start Game
 
-Using the Application
+![Alt execution capture](/captures/app_start_game.jpg)
 
-![Alt execution capture](/)
+Using the Application - View Words
 
-Using the Application
+![Alt execution capture](/captures/app_view_words.jpg)
 
-![Alt execution capture](/)
+Using the Application - Add Words
 
-Using the Application
+![Alt execution capture](/captures/app_add_words.jpg)
+![Alt execution capture](/captures/app_add_words2.jpg)
 
-![Alt execution capture](/)
+Using the Application - Remove Words
+
+![Alt execution capture](/captures/app_remove_words.jpg)
+![Alt execution capture](/captures/app_remove_words2.jpg)
 
 Application End
 
-![Alt execution capture](/)
+![Alt execution capture](/captures/app_exit.jpg)
 
 ## Change Log
 

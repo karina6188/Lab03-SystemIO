@@ -245,14 +245,11 @@ namespace lab03_system_io
                 hidden[i] = "_";
                 Console.Write($"{hidden[0]} ");
             }
-            //MatchGuessWord(guessWord);
-
-            Console.WriteLine($"{guessWord}");
-            Console.WriteLine($"{guessWordLength}");
 
             bool notWin = true;
             while (notWin)
             {
+                Console.WriteLine("");
                 char input = Console.ReadLine()[0];
                 char guess = char.ToLower(input);
                 for (int i = 0; i < guessWord.Length; i++)
