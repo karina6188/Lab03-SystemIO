@@ -258,24 +258,32 @@ namespace lab03_system_io
                 Console.Write($"{hidden[0]} ");
             }
 
+            int attemptsNumber = 0;
+            string userGuessed = "";
             bool notWin = true;
             while (notWin)
             {
                 Console.WriteLine("");
                 char input = Console.ReadLine()[0];
                 char guess = char.ToLower(input);
+                userGuessed += guess;
+
                 for (int i = 0; i < guessWord.Length; i++)
                 {
                     if (guessWord[i] == guess)
                     {
                         hidden[i] = guess.ToString();
                     }
-
                 }
                 foreach (string letter in hidden)
                 {
                     Console.Write($"{letter} ");
                 }
+                Console.WriteLine("");
+                Console.WriteLine($"You entered a character: {input}");
+                Console.WriteLine($"You guessed {attemptsNumber + 1} times in total.");
+                Console.WriteLine($"You have tried: {userGuessed}");
+
                 foreach (string letter in hidden)
                 {
                     if (!hidden.Contains("_"))
@@ -284,8 +292,7 @@ namespace lab03_system_io
                         return 'y';
                     }
                 }
-                Console.WriteLine("");
-                Console.WriteLine($"You entered a character: {input}");
+                attemptsNumber++;
             }
             return 'n';
         }
